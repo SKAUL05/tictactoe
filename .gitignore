@@ -1,6 +1,6 @@
 .idea
 *.pyc
-.migrations
+*.migrations
 db.sqlite3
 
 
