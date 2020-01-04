@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 def welcome(request):
     logging.info(request)
     user_objs = User.objects.all()
-    print ("Here",user_objs)
+    print("Here", user_objs)
     return HttpResponse("Hello, World!")
 
 
