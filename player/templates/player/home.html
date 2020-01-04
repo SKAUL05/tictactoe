@@ -1,11 +1,6 @@
-<!DOCTYPE html>
 <!--suppress BuyFluidPluginNoteInspection -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <h1>Welcome, {{user.username}} </h1>
     Following are your active games!!!
     <u>
@@ -13,5 +8,4 @@
         <li> Game #{{a_game.id}}: {{a_game.firstPlayer}} vs {{a_game.secondPlayer}} </li>
         {% endfor %}
     </u>
-</body>
-</html>
+{% endblock %}
