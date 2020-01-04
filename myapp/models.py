@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 
 GAME_STATUS_CHOICES = (
@@ -11,6 +12,17 @@ GAME_STATUS_CHOICES = (
     ("L", "Second Player Wins"),
     ("D", "Draw"),
 )
+
+
+class GameQuerySet(models.QuerySet):
+    def games_for_user(self, user):
+        return self.filter(Q(firstPlayer=user) | Q(secondPlayer=user))
+
+    def active(self):
+        return self.filter(Q(status="F") | Q(status="S"))
+
+    def draw(self):
+        return self.filter(status = 'D')
 
 
 class Game(models.Model):
@@ -23,6 +35,8 @@ class Game(models.Model):
     startTime = models.DateTimeField(auto_now_add=True)
     lastActive = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=1, default="F", choices=GAME_STATUS_CHOICES)
+
+    manager = GameQuerySet.as_manager()
 
     def __str__(self):
         return "{0} vs {1}".format(self.firstPlayer, self.secondPlayer)
