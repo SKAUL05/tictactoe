@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+ {{ game }}
+{% endblock %}
+
+{% block styling %}
+  {{ block.super }}
+  <style type="text/css">
+    .tictactoe-table {
+      width: 300px;
+      border-width: 2px;
+    }
+    .tictactoe-cell {
+      background-color:  #debb27;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      vertical-align: middle !important;
+      font-size: 60px;
+    }
+  </style>
+{% endblock  %}
+
+{% block content %}
+  <div class="col-md-5">
+
+    {% if game.status == 'F' %}
+      {{ game.firstPlayer }} to play
+    {% elif game.status == 'S' %}
+      {{ game.secondPlayer }} to play
+    {% elif game.status == 'W' %}
+      {{ game.firstPlayer }} won!
+    {% elif game.status == 'L' %}
+      {{ game.secondPlayer }} won!
+    {% elif game.status == 'D' %}
+      It's a draw!
+    {% endif %}
+
+    <table class="table table-bordered tictactoe-table">
+      {% for row in game.board %}
+      <tr>
+        {% for move in row %}
+        <td class="tictactoe-cell">
+          {% if move %}
+            {% if move.firstPlayerMove %}
+          X
+            {% else %}
+          O
+            {% endif %}
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+{% if form %}
+  <div class="col-md-4">
+    <h3>It's your move</h3>
+    <form method="POST" action="{% url 'gameplay_make_move' game.id %}">
+      {{ form | crispy }}
+      {% csrf_token %}
+
+      <button type="submit">Make move</button>
+    </form>
+  </div>
+  {% endif %}
+{% endblock content %}
+

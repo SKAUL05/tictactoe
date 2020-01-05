@@ -9,11 +9,11 @@ Home: {{user.username}}
     <div class="row">
         <div class="col-md-6">
             <h3> Active Games </h3>
-            <ul>
-                {% for a_game in games %}
-                    <li> Game {{a_game.id}}: {{a_game.firstPlayer}} vs {{a_game.secondPlayer}} </li>
-                {% endfor %}
-            </ul>
+            {% include "player/game_list_snippet.html" with games_list=games %}
+
+            <h3>Finished games</h3>
+
+            {% include "player/game_list_snippet.html" with games_list=finished_games %}
             <p> Click below to invite someone for play</p>
             <p>
                 <a class="btn btn-primary" href = "{% url 'invitation_form' %}">

@@ -23,6 +23,6 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^$", views.welcome),
     url(r"^accounts/",include("player.urls")),
-    url(r"^myapp/", include("myapp.urls")),
+    url(r"^games/", include("myapp.urls")),
     url(r"^player/", include("player.urls")),
 ]

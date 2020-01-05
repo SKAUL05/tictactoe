@@ -1,0 +1,29 @@
+{% if games_list %}
+
+    <div class="list-group bg-info" >
+        {% for game in games_list %}
+            <a class="list-group-item list-group-item-info"
+               href="{{ game.get_absolute_url }}">
+                {{ game }}
+                {% if game.status not in 'FS' %}
+                    {% if game.status == "D" %}
+                        -- Draw
+                    {% elif game.status == "W" and user == game.firstPlayer %}
+                        -- You won!
+                    {% elif game.status == "L" and user == game.secondPlayer %}
+                        -- You won!
+                    {% else %}
+                        -- You lost
+                    {% endif %}
+                {% endif %}
+                <span class="badge">{{ game.move_set.count }}</span>
+            </a>
+        {% endfor %}
+    </div>
+
+
+{% else %}
+
+    There is nothing here.
+
+{% endif %}
