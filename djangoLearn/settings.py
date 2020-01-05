@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
-    'player'
+    'player',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -115,11 +116,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+CONN_MAX_AGE = 15
+
+LOGIN_REDIRECT_URL = "player_home"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+   ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

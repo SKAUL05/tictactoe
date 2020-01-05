@@ -1,15 +1,42 @@
 <!--suppress BuyFluidPluginNoteInspection -->
 {% extends "base.html" %}
 {% block title %}
-Home
+Home: {{user.username}}
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome, {{user.username}} </h1>
-    Following are your active games!!!
-    <u>
-        {% for a_game in games %}
-        <li> Game #{{a_game.id}}: {{a_game.firstPlayer}} vs {{a_game.secondPlayer}} </li>
-        {% endfor %}
-    </u>
+    <h2 class="text-primary">Welcome, {{user.username}}</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h3> Active Games </h3>
+            <ul>
+                {% for a_game in games %}
+                    <li> Game {{a_game.id}}: {{a_game.firstPlayer}} vs {{a_game.secondPlayer}} </li>
+                {% endfor %}
+            </ul>
+            <p> Click below to invite someone for play</p>
+            <p>
+                <a class="btn btn-primary" href = "{% url 'invitation_form' %}">
+                    Send Invitation
+                </a>
+            </p>
+        </div>
+
+        <div class = "col-md-6">
+            <h3> Invitations</h3>
+            {% if invitations %}
+                <div class ="list-group">
+                    {% for inv in invitations %}
+                        <a class="list-group-item" href="{% url 'player_accept_invitation' id=inv.id %}">
+                            {{ inv.fromUser.username }} has invited for a game.
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p> You have no invitations. </p>
+            {% endif %}
+        </div>
+
+    </div>
+
 {% endblock %}
