@@ -7,8 +7,6 @@
 
 > Game of Tic Tac Toe developed using Django
 
-### 🏠 [Homepage](https://skaul05-tictactoe.herokuapp.com/)
-
 ### ✨ [Demo](https://skaul05-tictactoe.herokuapp.com/)
 
 ## Author
