@@ -13,7 +13,6 @@ class MoveForm(ModelForm):
     x = self.cleaned_data.get("x")
     y = self.cleaned_data.get("y")
     game = self.instance.game
-
     try:
       if game.board()[y][x] is not None:
         raise ValidationError("Square is not empty")

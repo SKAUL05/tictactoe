@@ -25,24 +25,23 @@
 
 {% block content %}
   <div class="col-md-5">
-
-    {% if game.status == 'F' %}
-      {{ game.firstPlayer }} to play
-    {% elif game.status == 'S' %}
-      {{ game.secondPlayer }} to play
-    {% elif game.status == 'W' %}
-      {{ game.firstPlayer }} won!
-    {% elif game.status == 'L' %}
-      {{ game.secondPlayer }} won!
-    {% elif game.status == 'D' %}
-      It's a draw!
-    {% endif %}
+      {% if game.status == 'F' %}
+    <p>{{ game.firstPlayer }} to play <span class="badge"> X</span> </p>
+      {% elif game.status == 'S' %}
+    <p> {{ game.secondPlayer }} to play <span class="badge">O</span> </p>
+      {% elif game.status == 'W' %}
+        {{ game.firstPlayer }} won!
+      {% elif game.status == 'L' %}
+        {{ game.secondPlayer }} won!
+      {% elif game.status == 'D' %}
+        It's a draw!
+      {% endif %}
 
     <table class="table table-bordered tictactoe-table">
       {% for row in game.board %}
       <tr>
         {% for move in row %}
-        <td class="tictactoe-cell">
+        <td class="tictactoe-cell" onclick="change({{forloop.parentloop.counter}}, {{forloop.counter}}, {{game.id}})">
           {% if move %}
             {% if move.firstPlayerMove %}
           X
@@ -70,3 +69,36 @@
   {% endif %}
 {% endblock content %}
 
+{% block javascript %}
+  <script>
+   async function change(x, y, id){
+            console.log(x);
+            console.log(y);
+            x = x-1;
+            y = y-1;
+            const url = "/games/make_move/" + id + "/";
+            await fetch(url, {
+                method : "POST",
+                async: false,
+                body : JSON.stringify({
+                    x : y,
+                    y : x,
+                    id : id,
+                    comment : '',
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                 })
+            })
+            .then(async response => {
+            return response.text();}
+            )
+            .then(async data => {
+                console.log(data);
+<!--                var parser = new DOMParser();-->
+<!--	            var doc = parser.parseFromString(data, 'text/html');-->
+<!--	            console.log(doc);-->
+<!--	            console.log(data.content);-->
+                $("#container").html(data);
+                 });
+            }
+  </script>
+{% endblock %}

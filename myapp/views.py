@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .models import Game
 from .forms import MoveForm
@@ -28,13 +30,26 @@ def game_detail(request, id):
                   context
                   )
 
-@login_required()
+# @login_required()
+@csrf_exempt
 def make_move(request, id):
-    game = get_object_or_404(Game, pk=id)
+    import json
+    data = json.loads(request.body)
+    game = get_object_or_404(Game, pk=data['id'])
     if not game.is_users_move(request.user):
         raise PermissionDenied
     move = game.new_move()
-    form = MoveForm(instance=move, data=request.POST)
+    from django.http import QueryDict
+    del data['id']
+    data['x'] = str(data['x'])
+    data['y'] = str(data['y'])
+    ordinary_dict = data
+    query_dict = QueryDict('', mutable=True)
+    query_dict.update(ordinary_dict)
+    # < QueryDict: {'x': ['0'], 'y': ['2'], 'comment': [''],
+    #               'csrfmiddlewaretoken': ['VGI47QxAjFvZVjV4LB9Or2ElwgJYfZmCRFftw8I7sHr2GpIrEbDqeIjicorQe0MM']} >
+
+    form = MoveForm(instance=move, data=query_dict)
     if form.is_valid():
         move.save()
         return redirect("gameplay_detail", id)
