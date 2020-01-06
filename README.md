@@ -1,11 +1,7 @@
 <h1 align="center">Welcome to tictactoe 👋</h1>
-<p>
-  <a href="https://www.npmjs.com/package/tictactoe" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/tictactoe.svg">
-  </a>
-</p>
 
-### ✨ [Demo](https://skaul05-tictactoe.herokuapp.com/)
+
+### ✨ [Home Page](https://skaul05-tictactoe.herokuapp.com/)
 
 # Project Title
 
@@ -42,11 +38,11 @@ Heroku is used for all deployment needs.
 
 ## Built With
 
-> Django
-> HTML
-> CSS
-> JavaScript
-> Heroku
+<p>
+    <img alt="Version" src="https://icon2.cleanpng.com/20180805/eb/kisspng-django-python-computer-icons-logo-portable-network-django-python-recruitment-task-1-5b6748f31f04c5.1280117815334955391271.jpg" width="100" height="100">
+    <img alt="Version" src="https://freepngimg.com/download/python_logo/5-2-python-logo-png-image.png" width="150" height="100">
+    <img src = "https://user-images.githubusercontent.com/30186107/29488525-f55a69d0-84da-11e7-8a39-5476f663b5eb.png" width="130" height="100">
+</p>
 
 ## Contributing
 
