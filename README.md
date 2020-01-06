@@ -1,9 +1,5 @@
 <h1 align="center">Welcome to tictactoe 👋</h1>
-<p>
-  <a href="https://www.npmjs.com/package/tictactoe" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/tictactoe.svg">
-  </a>
-</p>
+
 
 ### ✨ [Demo](https://skaul05-tictactoe.herokuapp.com/)
 
