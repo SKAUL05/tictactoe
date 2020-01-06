@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to tictactoe 👋</h1>
 
 
-### ✨ [Demo](https://skaul05-tictactoe.herokuapp.com/)
+### ✨ [Home Page](https://skaul05-tictactoe.herokuapp.com/)
 
 # Project Title
 
