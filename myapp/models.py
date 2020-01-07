@@ -25,7 +25,7 @@ class GameQuerySet(models.QuerySet):
         return self.filter(Q(status="F") | Q(status="S"))
 
     def draw(self):
-        return self.filter(status = 'D')
+        return self.filter(status="D")
 
 
 class Game(models.Model):
@@ -49,20 +49,18 @@ class Game(models.Model):
         return board
 
     def is_users_move(self, user):
-        return (user == self.firstPlayer and self.status == 'F') or \
-               (user == self.secondPlayer and self.status == 'S')
+        return (user == self.firstPlayer and self.status == "F") or (
+            user == self.secondPlayer and self.status == "S"
+        )
 
     def get_absolute_url(self):
-        return reverse('gameplay_detail',args=[self.id])
+        return reverse("gameplay_detail", args=[self.id])
 
     def new_move(self):
         """Returns a new move object with player, game, and count preset"""
-        if self.status not in 'FS':
+        if self.status not in "FS":
             raise ValueError("Cannot make move on finished game")
-        return Move(
-            game=self,
-            firstPlayerMove=self.status == 'F'
-        )
+        return Move(game=self, firstPlayerMove=self.status == "F")
 
     def update_after_move(self, move):
         """Update the status of the game, given the last move"""
@@ -73,11 +71,21 @@ class Game(models.Model):
     def _get_game_status_after_move(self, move):
         x, y = move.x, move.y
         board = self.board()
-        if ((board[y][0] == board[y][1] == board[y][2]) or (board[0][x] == board[1][x] == board[2][x]) or (board[0][0] == board[1][1] == board[2][2]) or (board[0][2] == board[1][1] == board[2][0])) and ((board[y][0] or board[y][1]  or board[y][2]) and (board[0][x] or board[1][x] or board[2][x]) and (board[0][0] or board[1][1] or board[2][2]) and (board[0][2] or board[1][1] or board[2][0])):
+        if (
+            (board[y][0] == board[y][1] == board[y][2])
+            or (board[0][x] == board[1][x] == board[2][x])
+            or (board[0][0] == board[1][1] == board[2][2])
+            or (board[0][2] == board[1][1] == board[2][0])
+        ) and (
+            (board[y][0] or board[y][1] or board[y][2])
+            and (board[0][x] or board[1][x] or board[2][x])
+            and (board[0][0] or board[1][1] or board[2][2])
+            and (board[0][2] or board[1][1] or board[2][0])
+        ):
             return "W" if move.firstPlayerMove else "L"
         if self.move_set.count() >= BOARD_SIZE ** 2:
-            return 'D'
-        return 'S' if self.status == 'F' else 'F'
+            return "D"
+        return "S" if self.status == "F" else "F"
 
     def __str__(self):
         return "{0} vs {1}".format(self.firstPlayer, self.secondPlayer)
@@ -85,12 +93,10 @@ class Game(models.Model):
 
 class Move(models.Model):
     x = models.IntegerField(
-        validators=[MinValueValidator(0),
-                    MaxValueValidator(BOARD_SIZE - 1)]
+        validators=[MinValueValidator(0), MaxValueValidator(BOARD_SIZE - 1)]
     )
     y = models.IntegerField(
-        validators=[MinValueValidator(0),
-                    MaxValueValidator(BOARD_SIZE - 1)]
+        validators=[MinValueValidator(0), MaxValueValidator(BOARD_SIZE - 1)]
     )
     comment = models.CharField(max_length=300, blank=True)
     game = models.ForeignKey(Game, editable=False, on_delete=models.CASCADE)

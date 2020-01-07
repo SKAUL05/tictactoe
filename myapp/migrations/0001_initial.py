@@ -17,24 +17,59 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Game',
+            name="Game",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('startTime', models.DateTimeField(auto_now_add=True)),
-                ('lastActive', models.DateTimeField(auto_now=True)),
-                ('firstPlayer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='game_first_player', to=settings.AUTH_USER_MODEL)),
-                ('secondPlayer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='game_second_player', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("startTime", models.DateTimeField(auto_now_add=True)),
+                ("lastActive", models.DateTimeField(auto_now=True)),
+                (
+                    "firstPlayer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="game_first_player",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "secondPlayer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="game_second_player",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Move',
+            name="Move",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('x', models.IntegerField()),
-                ('y', models.IntegerField()),
-                ('comment', models.CharField(blank=True, max_length=300)),
-                ('firstPlayerMove', models.BooleanField()),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapp.Game')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("x", models.IntegerField()),
+                ("y", models.IntegerField()),
+                ("comment", models.CharField(blank=True, max_length=300)),
+                ("firstPlayerMove", models.BooleanField()),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="myapp.Game"
+                    ),
+                ),
             ],
         ),
     ]

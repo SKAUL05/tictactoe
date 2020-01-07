@@ -7,19 +7,26 @@ import django.db.models.manager
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('myapp', '0002_game_status'),
+        ("myapp", "0002_game_status"),
     ]
 
     operations = [
         migrations.AlterModelManagers(
-            name='game',
-            managers=[
-                ('manager', django.db.models.manager.Manager()),
-            ],
+            name="game", managers=[("manager", django.db.models.manager.Manager()),],
         ),
         migrations.AlterField(
-            model_name='game',
-            name='status',
-            field=models.CharField(choices=[('F', 'First Player To Move'), ('S', 'Second Player To Move'), ('W', 'First Player Wins'), ('L', 'Second Player Wins'), ('D', 'Draw')], default='F', max_length=1),
+            model_name="game",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("F", "First Player To Move"),
+                    ("S", "Second Player To Move"),
+                    ("W", "First Player Wins"),
+                    ("L", "Second Player Wins"),
+                    ("D", "Draw"),
+                ],
+                default="F",
+                max_length=1,
+            ),
         ),
     ]
