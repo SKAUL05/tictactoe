@@ -52,7 +52,7 @@ Heroku is used for all deployment needs.
 - Step 1
 > Run server on local using `python manage.py runserver`
 - Step 2
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b86ae54bbc4a7e2337e9)
+>[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b86ae54bbc4a7e2337e9)
 
 
 
