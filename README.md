@@ -46,7 +46,7 @@ Heroku is used for all deployment needs.
 
 ## Contributing
 
-- 🔃 Create a new pull request using <a href="https://github.com/SKAUL05/tictactoe/compare/" target="_blank">`https://github.com/SKAUL05/tictactoe/compare`</a>.
+- 🔃 Create a new pull request using <a href="https://github.com/SKAUL05/tictactoe/compare/" target="_blank">`https://github.com/SKAUL05/tictactoe/compare`</a>
 
 ## Postman Collections
 - Step 1
