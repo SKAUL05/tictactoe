@@ -17,8 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: npm install and postman collection testing
       run: |
         npm ci
         npm i newman -g
+        newman run https://www.getpostman.com/collections/b86ae54bbc4a7e2337e9
 
