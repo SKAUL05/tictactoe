@@ -60,7 +60,7 @@ Heroku is used for all deployment needs.
 
 👤 **Sarath Kaul**
 
-* Website: https://www.linkedin.com/in/skaul05/
+* Linkedin: https://www.linkedin.com/in/skaul05/
 * Github: [@skaul05](https://github.com/skaul05)
 
 ## ➤ Show your support
