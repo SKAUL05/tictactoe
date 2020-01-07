@@ -21,5 +21,4 @@ jobs:
       run: |
         npm ci
         npm i newman -g
-        newman run https://www.getpostman.com/collections/b86ae54bbc4a7e2337e9
 
