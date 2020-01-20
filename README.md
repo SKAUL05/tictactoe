@@ -38,13 +38,11 @@ Heroku is used for all deployment needs.
 
 ## Built With
 
-<p>
     #### Django
     #### Python
     #### HTML
     #### CSS
     #### Javascript
-</p>
 
 ## Contributing
 
