@@ -3,7 +3,8 @@
 
 ### ✨ [Home Page](https://skaul05-tictactoe.herokuapp.com/)
 ![PostMan Collection Run](https://github.com/SKAUL05/tictactoe/workflows/PostMan%20Collection%20Run/badge.svg?branch=master)
-
+![Python Tests](https://github.com/SKAUL05/tictactoe/workflows/Python%20Tests/badge.svg?branch=master&event=push)
+![Heroku](https://heroku-badge.herokuapp.com/?app=skaul05-tictactoe)
 # Project Title
 
 A simple and elegant game of Tic Tac Toe which includes invitations
