@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["skaul05-tictactoe.herokuapp.com","*"]
+ALLOWED_HOSTS = ["skaul05-tictactoe.herokuapp.com"]
 
 
 # Application definition
@@ -125,7 +125,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 import dj_database_url
