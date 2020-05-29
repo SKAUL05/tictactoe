@@ -2,6 +2,7 @@
 
 
 ### ✨ [Home Page](https://skaul05-tictactoe.herokuapp.com/)
+![PostMan Collection Run](https://github.com/SKAUL05/tictactoe/workflows/PostMan%20Collection%20Run/badge.svg?branch=master)
 
 # Project Title
 
