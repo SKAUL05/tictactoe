@@ -5,6 +5,9 @@
 ![PostMan Collection Run](https://github.com/SKAUL05/tictactoe/workflows/PostMan%20Collection%20Run/badge.svg?branch=master)
 ![Python Tests](https://github.com/SKAUL05/tictactoe/workflows/Python%20Tests/badge.svg?branch=master&event=push)
 ![Postman Version](https://img.shields.io/badge/postman-v6.2.3-green.svg)
+[![GitHub stars](https://img.shields.io/github/stars/SKAUL05/tictactoe?logo=github&color=orange)](https://github.com/SKAUL05/tictactoe/stargazers)
+![Website](https://img.shields.io/website?down_color=down&down_message=offline&style=plastic&up_color=green&up_message=up&url=https%3A%2F%2Fskaul05-tictactoe.herokuapp.com)
+
 # Project Title
 
 A simple and elegant game of Tic Tac Toe which includes invitations
@@ -47,6 +50,11 @@ Heroku is used for all deployment needs.
 - Javascript
 
 ## Contributing
+[![GitHub license](https://img.shields.io/github/license/SKAUL05/tictactoe?logo=github)](https://github.com/SKAUL05/tictactoe/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/SKAUL05/tictactoe?logo=github&color=red)](https://github.com/SKAUL05/tictactoe/issues)
+[![GitHub forks](https://img.shields.io/github/forks/SKAUL05/tictactoe?logo=github)](https://github.com/SKAUL05/tictactoe/network)
+![GitHub repo size](https://img.shields.io/github/repo-size/SKAUL05/tictactoe?logo=github)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/SKAUL05/tictactoe?color=yellow&logo=github)
 
 - 🔃 Create a new pull request using <a href="https://github.com/SKAUL05/tictactoe/compare/" target="_blank">`https://github.com/SKAUL05/tictactoe/compare`</a>
 
