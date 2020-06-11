@@ -45,7 +45,7 @@ def new_invitation(request):
 @login_required()
 def accept_invitation(request, id):
     invitation = get_object_or_404(Invitation, pk=id)
-    if not request.user == invitation.toUser:
+    if request.user != invitation.toUser:
         raise PermissionDenied
     if request.method == "POST":
         if "accept" in request.POST:
