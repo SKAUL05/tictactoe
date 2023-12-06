@@ -47,17 +47,16 @@ def accept_invitation(request, id):
     invitation = get_object_or_404(Invitation, pk=id)
     if request.user != invitation.toUser:
         raise PermissionDenied
-    if request.method == "POST":
-        if "accept" in request.POST:
-            game = Game.manager.create(
-                firstPlayer=invitation.toUser, secondPlayer=invitation.fromUser,
-            )
-            invitation.delete()
-            return redirect(game)
-    else:
+    if request.method != "POST":
         return render(
             request, "player/accept_invitation_form.html", {"invitation": invitation}
         )
+    if "accept" in request.POST:
+        game = Game.manager.create(
+            firstPlayer=invitation.toUser, secondPlayer=invitation.fromUser,
+        )
+        invitation.delete()
+        return redirect(game)
 
 
 class SignUpView(CreateView):

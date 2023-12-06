@@ -52,13 +52,12 @@ def make_move(request, id):
     #               'csrfmiddlewaretoken': ['VGI47QxAjFvZVjV4LB9Or2ElwgJYfZmCRFftw8I7sHr2GpIrEbDqeIjicorQe0MM']} >
 
     form = MoveForm(instance=move, data=query_dict)
-    if form.is_valid():
-        move.save()
-        return redirect("gameplay_detail", id)
-    else:
+    if not form.is_valid():
         return render(
             request, "gameplay/game_detail.html", {"game": game, "form": form}
         )
+    move.save()
+    return redirect("gameplay_detail", id)
 
 
 class AllGamesList(ListView):
