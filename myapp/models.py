@@ -43,7 +43,7 @@ class Game(models.Model):
     def board(self):
         """Return a 2-dimensional list of Move objects
           so you can ask for the state of a square at position [x][y]."""
-        board = [[None for x in range(BOARD_SIZE)] for y in range(BOARD_SIZE)]
+        board = [[None for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
         for move in self.move_set.all():
             board[move.y][move.x] = move
         return board
